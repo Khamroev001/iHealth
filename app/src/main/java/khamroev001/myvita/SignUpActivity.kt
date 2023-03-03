@@ -4,13 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
-import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import khamroev001.myvita.model.User
+
 class SignUpActivity : AppCompatActivity() {
 
     lateinit var username: EditText
@@ -26,17 +26,14 @@ class SignUpActivity : AppCompatActivity() {
 
         var type = object : TypeToken<List<User>>() {}.type
         var gson = Gson()
-        var sh = getSharedPreferences("register", MODE_PRIVATE)
+        var sh = getSharedPreferences("login", MODE_PRIVATE)
         var edit = sh.edit()
         setContentView(R.layout.activity_sign_up)
         loadElements()
 
-        val login = findViewById<TextView>(R.id.textView6)
-        val logIntent = Intent(this, LoginActivity::class.java)
-        login.setOnClickListener { v: View? -> startActivity(logIntent) }
 
         createAcc.setOnClickListener {
-            var str = sh.getString("register", "")
+            var str = sh.getString("user", "")
             usersList = if (str == "") {
                 mutableListOf<User>()
             } else {
@@ -44,10 +41,11 @@ class SignUpActivity : AppCompatActivity() {
             }
             for (i in usersList) {
                 if (username.text.toString() == i.name) {
+                    println("AAAAAAAAAAAAAAAAAAAA")
+                    println(username.text.toString())
+                    println(i.name)
                     Toast.makeText(
-                        applicationContext,
-                        "this username is not available",
-                        Toast.LENGTH_LONG
+                        applicationContext, "this username is not available", Toast.LENGTH_SHORT
                     ).show()
                     return@setOnClickListener
                 }
@@ -56,17 +54,25 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(
                     applicationContext,
                     "password should include more than 8 characters",
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
             } else {
                 if (!Patterns.EMAIL_ADDRESS.matcher(email.text).matches()) {
-                    Toast.makeText(applicationContext, "your email is not valid", Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, "Email is not valid", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-                    usersList.add(User(username.text.toString(), email.text.toString(), password.text.toString()))
+                    usersList.add(
+                        User(
+                            username.text.toString(),
+                            email.text.toString(),
+                            password.text.toString()
+                        )
+                    )
                     var s = gson.toJson(usersList)
-                    edit.putString("register", s).apply()
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    edit.putString("user", s).apply()
+                    finish()
+                    var intent=Intent(this,PIN::class.java)
+                    startActivity(intent)
                 }
             }
         }
@@ -79,4 +85,4 @@ class SignUpActivity : AppCompatActivity() {
         createAcc = findViewById(R.id.create_acc)
     }
 
-    }
+}

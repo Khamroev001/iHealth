@@ -1,4 +1,4 @@
-package khamroev001.myvita
+package khamroev001.myvita.model
 
 import java.net.PasswordAuthentication
 
