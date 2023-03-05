@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import androidx.core.os.postDelayed
 import khamroev001.myvita.databinding.ActivityPinBinding
@@ -18,6 +19,8 @@ class PIN : AppCompatActivity(), View.OnClickListener {
     lateinit var sh: SharedPreferences
     lateinit var edit: SharedPreferences.Editor
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,9 +30,8 @@ class PIN : AppCompatActivity(), View.OnClickListener {
         sh = getSharedPreferences("login", MODE_PRIVATE)
         edit = sh.edit()
 
-
-
         binding.dot1.setOnClickListener(this)
+        binding.dot2.setOnClickListener(this)
         binding.dot3.setOnClickListener(this)
         binding.dot4.setOnClickListener(this)
         binding.dot5.setOnClickListener(this)
@@ -38,6 +40,7 @@ class PIN : AppCompatActivity(), View.OnClickListener {
         binding.dot8.setOnClickListener(this)
         binding.dot9.setOnClickListener(this)
         binding.dot0.setOnClickListener(this)
+
 
         binding.delete.setOnClickListener {
             pin.dropLast(0)
@@ -87,13 +90,17 @@ class PIN : AppCompatActivity(), View.OnClickListener {
                 Handler(Looper.getMainLooper()).postDelayed({
                     edit.putString("pin", pin).apply()
                     finish()
-                    startActivity(Intent(this, HelloActivity::class.java))
+                    startActivity(Intent(this, MainActivity::class.java))
                 }, 500)
             } else {
                 if (pin == sh.getString("pin", "")) {
+                    binding.plot1.setBackgroundResource(R.drawable.cube_green)
+                    binding.plot2.setBackgroundResource(R.drawable.cube_green)
+                    binding.plot3.setBackgroundResource(R.drawable.cube_green)
+                    binding.plot4.setBackgroundResource(R.drawable.cube_green)
                     Handler(Looper.getMainLooper()).postDelayed({
                         finish()
-                        startActivity(Intent(this, HelloActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
                     }, 500)
                 } else {
                     pin = ""
@@ -135,12 +142,26 @@ class PIN : AppCompatActivity(), View.OnClickListener {
         binding.plot3.setBackgroundResource(R.drawable.cube_red)
         binding.plot4.setBackgroundResource(R.drawable.cube_red)
 
+        stop()
+
         Handler(Looper.getMainLooper()).postDelayed({
             binding.plot1.setBackgroundResource(R.drawable.cube_border)
             binding.plot2.setBackgroundResource(R.drawable.cube_border)
             binding.plot3.setBackgroundResource(R.drawable.cube_border)
             binding.plot4.setBackgroundResource(R.drawable.cube_border)
         }, 500)
+
+        binding.dot1.isClickable = true
+        binding.dot2.isClickable = true
+        binding.dot3.isClickable = true
+        binding.dot4.isClickable = true
+        binding.dot5.isClickable = true
+        binding.dot6.isClickable = true
+        binding.dot7.isClickable = true
+        binding.dot8.isClickable = true
+        binding.dot9.isClickable = true
+        binding.dot0.isClickable = true
     }
 
 }
+
