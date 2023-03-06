@@ -1,6 +1,7 @@
 package khamroev001.myvita
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         binding.rv.layoutManager=layoutManager
 
         binding.favAppBarBtn.setOnClickListener {
+            binding.search.clearFocus()
+            binding.search.setText("")
             if (!onfavpage){
                 var items_filtered=items.filter { it.isFavourite==true }
                 var adapter_filtered=MainAdapter(this,items_filtered as MutableList<Item>)
@@ -64,6 +67,11 @@ class MainActivity : AppCompatActivity() {
             binding.search.clearFocus() // Remove the focus from EditText
                 }
             false
+        }
+
+        binding.cartBtn.setOnClickListener{
+            var intent=Intent(this,CartActivity::class.java)
+            startActivity(intent)
         }
 
 
