@@ -71,6 +71,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.cartBtn.setOnClickListener{
             var intent=Intent(this,CartActivity::class.java)
+
+            intent.putExtra("list",items as java.io.Serializable)
             startActivity(intent)
         }
 

@@ -41,18 +41,18 @@ class CartAdapter(var context: Context, private val itemList: MutableList<khamro
 
         holder.add.setOnClickListener {
             Toast.makeText(context,"one more ${item.name}  is added to cart ", Toast.LENGTH_SHORT).show()
-            holder.number.text.toString().toInt().plus(1)
-            notifyDataSetChanged()
+            holder.number.text=(holder.number.text.toString().toInt()+1).toString()
         }
         holder.minus.setOnClickListener {
-            if (holder.number.text.toString().toInt()>=1){
+            if (holder.number.text.toString().toInt()>=2){
                 Toast.makeText(context,"one ${item.name}  removed from cart ", Toast.LENGTH_SHORT).show()
-                holder.number.text.toString().toInt().minus(1)
-                notifyDataSetChanged()
+                holder.number.text=(holder.number.text.toString().toInt()-1).toString()
+
             }
         }
         holder.delete.setOnClickListener{
             item.addToCart=false
+           itemList.removeAt(position)
             notifyDataSetChanged()
         }
         holder.total_price.text="$ "+item.price.toString().toInt()*holder.number.text.toString().toInt()
