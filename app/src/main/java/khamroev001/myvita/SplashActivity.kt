@@ -14,26 +14,12 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        var type = object : TypeToken<List<User>>() {}.type
-        var gson = Gson()
-        var sh = getSharedPreferences("login", MODE_PRIVATE)
-        var edit = sh.edit()
-        var status:Boolean
-        var str = sh.getString("user", "")
+       Handler(Looper.getMainLooper()).postDelayed({
+           var intent=Intent(this,LanguagePrivacy::class.java)
+           startActivity(intent)
+           finish()
 
-       status=(str=="")
-
-        if (status){
-            Handler(Looper.getMainLooper()).postDelayed({
-                finish()
-                startActivity(Intent(this,SignUpActivity::class.java))
-            }, 3000)
-        }else {
-            Handler(Looper.getMainLooper()).postDelayed({
-                finish()
-                startActivity(Intent(this,PIN::class.java))
-            }, 3000)
-        }
+       },3000)
 
     }
 }
