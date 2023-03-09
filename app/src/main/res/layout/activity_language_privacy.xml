@@ -32,7 +32,7 @@
             android:id="@+id/checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I agree to your terms and conditions"
+            android:text="@string/i_agree_to_your_terms_and_conditions"
             android:textColor="@color/white"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="32dp"

@@ -1,4 +1,5 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">iHealth</string>
     <string name="select_language">Select language</string>
     <string name="i_agree_to_your_terms_and_conditions">I agree to your terms and conditions</string>

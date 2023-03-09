@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select_language"> Til tanlang</string>
+    <string name="i_agree_to_your_terms_and_conditions"> Havfsizlik shartlarini qabul qilaman</string>
+    <string name="medical_supplements">"Sog'lik uchun qo'shimchalar"</string>
+    <string name="looking_for_supplements">Dorilarni izlash</string>
+    <string name="my_cart">Mening savatcham</string>
+    <string name="ta_dori_bor"> ta dori bor</string>
+    <string name="price">Umumiy dorilar narxi</string>
+    <string name="delivery">Yetkazib berish </string>
+    <string name="total_sum">Umumiy xisob</string>
+    <string-array name="languages">
+        <item>Tilni tanlang</item>
+        <item>English</item>
+        <item>Uzbek</item>
+    </string-array>
+</resources>

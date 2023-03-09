@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="My cart"
+            android:text="@string/my_cart"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:text="3 ta dori bor"
+        android:text="@string/ta_dori_bor"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:visibility="visible" />
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:text="@string/price"
                 android:textColor="#707B81"
                 android:textSize="18sp" />
 
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delivery"
+                android:text="@string/delivery"
                 android:textColor="#707B81"
                 android:textSize="18sp" />
 
@@ -126,7 +126,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total sum"
+                android:text="@string/total_sum"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
