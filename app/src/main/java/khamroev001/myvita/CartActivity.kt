@@ -43,7 +43,7 @@ class CartActivity : AppCompatActivity() {
                         count: Int,
                     ) {
                         binding.subTotal.text = subtotal.toString()
-                        binding.itemCount.text = "$count  supplements"
+                        binding.itemCount.text = "$count   supplements"
                         binding.delivery.text = (count * 2).toString()
                         binding.totalCost.text = (binding.subTotal.text.toString()
                             .toInt() + binding.delivery.text.toString().toInt()).toString()
@@ -62,7 +62,7 @@ class CartActivity : AppCompatActivity() {
             k += i.count
             s += i.count * i.price
         }
-        binding.itemCount.text = k.toString() + "supplements"
+        binding.itemCount.text = k.toString() + "  ${binding.itemCount.text.toString()} "
         binding.subTotal.text = s.toString()
         binding.delivery.text = (k * 2).toString()
         binding.totalCost.text =

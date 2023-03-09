@@ -20,7 +20,6 @@ class PIN : AppCompatActivity(), View.OnClickListener {
     lateinit var edit: SharedPreferences.Editor
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -109,6 +108,13 @@ class PIN : AppCompatActivity(), View.OnClickListener {
                 }
             }
 
+        }
+        binding.logOut.setOnClickListener {
+            edit.clear()
+            var intent = Intent(this, LanguagePrivacy::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+            finish()
         }
     }
 

@@ -219,6 +219,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_green_border"
             android:elevation="-5dp"
+            android:clickable="true"
             android:textAlignment="center"
             app:backgroundTint="@color/white"
             app:icon="@drawable/ic_baseline_login_24"
